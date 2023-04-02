@@ -14,6 +14,7 @@ function YoutubeComp(props) {
   )
 }
 
+// Setting default props
 YoutubeComp.defaultProps = {
     time: '00.00',
     title: 'Title Here',
