@@ -1,33 +1,22 @@
 import React, { Component, Fragment } from "react";
 import "./Product.css";
+import CardProduct from "../CardProduct/CardProduct";
 
 export class Product extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
+    
+        
+        state = {
             order: 4,
             name:'hilman'
         }
-    }
     
     
-
-handlePlus = () => {
-        this.setState({
-            order: this.state.order + 1
-        })
+handleCounterChange = (newValue) => {
+      this.setState({
+        order:newValue
+      })
     }
 
-handleMinus = () => {
-    this.setState({
-        order: this.state.order - 1
-    })
-    if(this.state.order <= 1){
-        this.setState({
-            order: this.state.order = 1
-        })
-    }
-}
   render() {
     return (
       <Fragment>
@@ -43,22 +32,7 @@ handleMinus = () => {
             <div className="count">{this.state.order}</div>
           </div>
           </div>
-          <div className="card-product">
-            <div className="img-thumb-prod">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Ayam_bakar_Aie_Badarun.JPG/400px-Ayam_bakar_Aie_Badarun.JPG"
-                alt=""
-              />
-            </div>
-            <p className="product-title">Daging Ayam Bumbu</p>
-            <p className="product-price">Rp 410,000</p>
-            <div className="counter">
-              <button className="minus" onClick={this.handleMinus}>-</button>
-              <input type="text" value={this.state.order} />
-              <button className="plus" onClick={this.handlePlus}>+</button>
-            </div>
-          </div>
-        
+         <CardProduct onCounterChange={(value)=> this.handleCounterChange(value)}/>
       </Fragment>
     );
   }
